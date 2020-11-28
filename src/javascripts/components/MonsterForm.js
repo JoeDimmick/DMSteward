@@ -60,33 +60,30 @@ export default function MonsterForm(){
         initialValues : is_new ? {
             name: "",
             meta: "",
-            Armor_Class: "",
-            Hit_Points: "",
-            Speed: "",
-            STR: "",
-            STR_mod: "",
-            DEX: "",
-            DEX_mod: "",
-            CON: "",
-            CON_mod: "",
-            INT: "",
-            INT_mod: "",
-            WIS: "",
-            WIS_mod: "",
-            CHA: "",
-            CHA_mod: "",
-            Saving_Throws: "",
-            Skills: "",
-            Senses: "",
-            Languages: "",
-            Challenge: "",
-            Traits: "",
-            Actions: "",
-            Legendary_Actions: "",
-            img_url: "",
-            damage_immunities: "",
-            condition_immunities: "",
-            damage_resistances: ""
+            armor_Class: "",
+            hit_points: "",
+            speed: "",
+            str: "",
+            str_mod: "",
+            dex: "",
+            dex_mod: "",
+            con: "",
+            con_mod: "",
+            int: "",
+            int_mod: "",
+            wis: "",
+            wis_mod: "",
+            cha: "",
+            cha_mod: "",
+            saving_throws: "",
+            skills: "",
+            senses: "",
+            languages: "",
+            challenge: "",
+            traits: "",
+            actions: "",
+            legendary_Actions: "",
+            img_url: ""
         } : {...monster},
         validationSchema,
         onSubmit(values){
@@ -292,27 +289,6 @@ export default function MonsterForm(){
                 <div className="control">
                     <input type="text" name="img_url" value={values.img_url} onChange={handleChange}/>
                     <VHelp message={errors.img_url}/>
-                </div>
-            </div>
-            <div className = "field">
-                <label htmlFor= "damage_immunities">Damage Immunities</label>
-                <div className="control">
-                    <input type="text" name="damage_immunities" value={values.damage_immunities} onChange={handleChange}/>
-                    <VHelp message={errors.damage_immunities}/>
-                </div>
-            </div>
-            <div className = "field">
-                <label htmlFor= "condition_immunities">Condition Immunities</label>
-                <div className="control">
-                    <input type="text" name="condition_immunities" value={values.condition_immunities} onChange={handleChange}/>
-                    <VHelp message={errors.condition_immunities}/>
-                </div>
-            </div>
-            <div className = "field">
-                <label htmlFor= "damage_resistances">Damage Resistances</label>
-                <div className="control">
-                    <input type="text" name="damage_resistances" value={values.damage_resistances} onChange={handleChange}/>
-                    <VHelp message={errors.damage_resistances}/>
                 </div>
             </div>
             <div className="control">

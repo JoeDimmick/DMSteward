@@ -1,11 +1,8 @@
 import React, { useContext, useState, Link } from "react";
 import { MonsterContext } from "./MonsterList";
 import { useHistory, useParams } from "react-router-dom";
-import Monster from "./Monster";
-import { format } from "date-fns";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
-import { Container, Row, Col } from "reactstrap";
 
 const customStyles = {
     content: {
@@ -19,7 +16,8 @@ const customStyles = {
 };
 
 export default function MonsterDetails(props) {
-    let { monsters, setMonsters, authenticated, setAuthenticated } = useContext(MonsterContext);
+    let { monsters, setMonsters,
+        authenticated, setAuthenticated } = useContext(MonsterContext);
     let { monid } = useParams();
 
     const mon = props.monster;
@@ -135,15 +133,6 @@ export default function MonsterDetails(props) {
                         </li>
                         <li>
                             Legendary Actions: <strong>{monster.legendary_actions}</strong>
-                        </li>
-                        <li>
-                            Damage Immunities: <strong>{monster.damage_immunities}</strong>
-                        </li>
-                        <li>
-                            Condition Immunities: <strong>{monster.condition_immunities}</strong>
-                        </li>
-                        <li>
-                            Damage Resistances: <strong>{monster.damage_resistances}</strong>
                         </li>
                     </ul>
                     <button
