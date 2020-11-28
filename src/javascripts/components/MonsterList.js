@@ -56,9 +56,11 @@ export default function MonsterList() {
                 <Switch>
                     <Route exact path="/monsters">
                         <section id="monster-list">
-                            {monsters.map((mon, i) => {
-                                return <Monster key={mon.id} monster={mon}/>
-                            })}
+                            <div className="inner">
+                                {monsters.map((mon, i) => {
+                                    return <Monster key={mon.id} monster={mon}/>
+                                })}
+                            </div>
                         </section>
                     </Route>
                     <Route path="/monsters/new"><MonsterForm></MonsterForm></Route>

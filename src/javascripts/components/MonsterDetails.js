@@ -1,8 +1,8 @@
-import React, { useContext, useState, Link } from "react";
-import { MonsterContext } from "./MonsterList";
-import { useHistory, useParams } from "react-router-dom";
+import React, {useContext, useState, Link} from "react";
+import {MonsterContext} from "./MonsterList";
+import {useHistory, useParams} from "react-router-dom";
 import Modal from "react-modal";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
 const customStyles = {
     content: {
@@ -16,9 +16,11 @@ const customStyles = {
 };
 
 export default function MonsterDetails(props) {
-    let { monsters, setMonsters,
-        authenticated, setAuthenticated } = useContext(MonsterContext);
-    let { monid } = useParams();
+    let {
+        monsters, setMonsters,
+        authenticated, setAuthenticated
+    } = useContext(MonsterContext);
+    let {monid} = useParams();
 
     const mon = props.monster;
     let monster = monid ? monsters.find(mon => mon.id == monid) : {};
@@ -59,82 +61,42 @@ export default function MonsterDetails(props) {
         }}>
             <>
                 <div className="card_expanded">
-                    <div>
-                        <img src={monster.img_url} alt={monster.name} />
+                    <div className="poster">
+                        <img src={monster.img_url} alt={monster.name}/>
                     </div>
-                    <h1>{monster.name}</h1>
-                    <h2>{monster.meta}</h2>
-                    <ul>
-                        <li>
-                            Armor Class: <strong>{monster.armor_class}</strong>
-                        </li>
-                        <li>
-                            Hit Points: <strong>{monster.hit_points}</strong>
-                        </li>
-                        <li>
-                            Speed: <strong>{monster.speed}</strong>
-                        </li>
-                        <li>
-                            STR: <strong>{monster.str}</strong>
-                        </li>
-                        <li>
-                            STR MOD: <strong>{monster.str_mod}</strong>
-                        </li>
-                        <li>
-                            DEX: <strong>{monster.dex}</strong>
-                        </li>
-                        <li>
-                            DEX MOD: <strong>{monster.dex_mod}</strong>
-                        </li>
-                        <li>
-                            CON: <strong>{monster.con}</strong>
-                        </li>
-                        <li>
-                            CON MOD: <strong>{monster.con_mod}</strong>
-                        </li>
-                        <li>
-                            INT: <strong>{monster.int}</strong>
-                        </li>
-                        <li>
-                            INT MOD: <strong>{monster.int_mod}</strong>
-                        </li>
-                        <li>
-                            WIS: <strong>{monster.wis}</strong>
-                        </li>
-                        <li>
-                            WIS MOD: <strong>{monster.wis_mod}</strong>
-                        </li>
-                        <li>
-                            CHA: <strong>{monster.cha}</strong>
-                        </li>
-                        <li>
-                            CHA MOD: <strong>{monster.cha_mod}</strong>
-                        </li>
-                        <li>
-                            Saving Throws: <strong>{monster.saving_throws}</strong>
-                        </li>
-                        <li>
-                            Skills: <strong>{monster.skills}</strong>
-                        </li>
-                        <li>
-                            Senses: <strong>{monster.senses}</strong>
-                        </li>
-                        <li>
-                            Languages: <strong>{monster.languages}</strong>
-                        </li>
-                        <li>
-                            Challenge: <strong>{monster.challenge}</strong>
-                        </li>
-                        <li>
-                            Traits: <strong>{monster.traits}</strong>
-                        </li>
-                        <li>
-                            Actions: <strong>{monster.actions}</strong>
-                        </li>
-                        <li>
-                            Legendary Actions: <strong>{monster.legendary_actions}</strong>
-                        </li>
-                    </ul>
+                    <div className="heading">
+                        <h1>{monster.name}</h1>
+                        <h2>{monster.meta}</h2>
+                        <p><strong>Challenge: </strong>{monster.challenge}</p>
+                    </div>
+                    <div className="block">
+                        <p><strong>Armor Class: </strong> {monster.armor_class}</p>
+                        <p><strong>Hit Points: </strong> {monster.hit_points}</p>
+                        <p><strong>Speed: </strong>{monster.speed}</p>
+                        Saving Throws: <strong>{monster.saving_throws}</strong>
+                    </div>
+                    <div className="block">
+                        <p><strong>STR: </strong> {monster.str}</p>
+                        <p><strong>STR MOD: </strong> {monster.str_mod}</p>
+                        <p><strong>DEX: </strong>{monster.dex}</p>
+                        <p><strong>DEX MOD: </strong>{monster.dex_mod}</p>
+                        <p><strong>CON: </strong>{monster.con}</p>
+                        <p><strong>CON MOD: </strong>{monster.con_mod}</p>
+                        <p><strong>INT: </strong>{monster.int}</p>
+                        <p><strong>INT MOD: </strong>{monster.int_mod}</p>
+                        <p><strong>WIS: </strong>{monster.wis}</p>
+                        <p><strong>WIS MOD: </strong>{monster.wis_mod}</p>
+                        <p><strong>CHA: </strong>{monster.cha}</p>
+                        <p><strong>CHA MOD: </strong>{monster.cha_mod}</p>
+                    </div>
+                    <div className="block">
+                        <p><strong>Skills: </strong>{monster.skills}</p>
+                        <p><strong>Senses: </strong>{monster.senses}</p>
+                        <p><strong>Languages: </strong>{monster.languages}</p>
+                        <p><strong>Traits: </strong>{monster.traits}</p>
+                        <p><strong>Actions: </strong>{monster.actions}</p>
+                        <p><strong>Legendary Actions: </strong>{monster.legendary_actions}</p>
+                    </div>
                     <button
                         className="primary"
                         onClick={() => history.push(`/monsters/${monster._id}/edit`)}

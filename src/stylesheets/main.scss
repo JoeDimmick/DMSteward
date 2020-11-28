@@ -3,7 +3,7 @@
 //Display: flex
 //justify-content: x-axis (rules: space-between, space-around, flex-start, flex-end, center)
 //align-items: up, down
-//flex-flow:
+//flex-wrap: wrap, nowrap
 html {
   box-sizing: border-box;
 }
@@ -97,15 +97,11 @@ body {
 
 .card_expanded {
   display: flex;
-  flex-direction: column;
-  width: fit-content;
-  max-width: 510px;
-  height: auto;
   border: 5px solid #492365;
-  box-sizing: border-box;
-  padding: 10px;
-  margin: 10px;
-  justify-content: flex-end;
+  padding: 4px;
+  margin: 4px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
   img {
     width: auto;
@@ -161,13 +157,18 @@ form {
 
 //left section
 #monster-list {
-  display: flex;
   width: 20%;
-  flex-wrap: wrap;
+  display: flex;
+  overflow: auto;
+  .inner{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 75.9vh;
+  }
   .item {
     display: flex;
     border: 2px solid black;
-    margin: 1px;
+    margin: .5px;
     width: 100%;
     justify-content: flex-start;
     flex-flow: column;
