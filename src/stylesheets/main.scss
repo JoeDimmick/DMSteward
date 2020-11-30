@@ -14,9 +14,10 @@ html {
 
 //font family for whole body
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Comic Sans MS, Arial, Helvetica, sans-serif;
   font-size: 12pt;
   margin: 0;
+  background: antiquewhite;
 }
 
 .container {
@@ -32,7 +33,7 @@ body {
 
   nav {
     display: flex;
-    background: #492365;
+    background: #480B00;
     text-decoration: none;
 
     ul {
@@ -65,7 +66,7 @@ body {
 
     & > .card {
       width: 30%;
-      border: 5px solid #492365;
+      border: 5px solid #480B00;
       padding: 10px;
       margin: 10px;
 
@@ -95,23 +96,65 @@ body {
   }
 }
 
-.card_expanded {
+#card_expanded {
   display: flex;
-  border: 5px solid #492365;
+  border: 5px solid #480B00;
+  background-image: url(../images/parchment.png);
+  background-position: center;
   padding: 4px;
   margin: 4px;
   justify-content: flex-start;
   flex-wrap: wrap;
 
-  img {
-    width: auto;
-    max-width: 490px;
-    flex-grow: 3;
-    position: center;
+  .poster{
+    display: flex;
+    img {
+      height: auto;
+      width: auto;
+      max-width: 490px;
+      position: center;
+      border: 5px solid #480B00;
+    }
   }
 
-  button {
-    max-width: 100px;
+  .heading{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 4px;
+    padding: 4px;
+    .meta{
+      flex-direction: column;
+      .vertical5050{
+        display: flex;
+        flex-wrap: wrap;
+        height: 42%;
+        margin: 4px;
+        padding: 4px;
+        justify-content: space-between;
+        .attribute-block{
+          padding: 2px;
+        }
+      }
+    }
+
+  }
+
+
+  .block{
+    display: flex;
+    flex-wrap: wrap;
+    .inner-block{
+      display: flex;
+      justify-content: space-evenly;
+      p{
+        margin: 2px;
+      }
+    }
+  }
+
+  .block-footer{
+    align-self: flex-end;
+    justify-self: flex-end;
   }
 }
 
@@ -120,38 +163,50 @@ button.primary {
   padding: 10px 20px;
   border: 1px solid lightgray;
   border-radius: 5px;
-  background: #492365;
-  color: whitesmoke;
+  background: #480B00;
+  color: white;
 }
 
-form {
-  width: 90%;
+button.primary-sm {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background: #480B00;
+  color: white;
+}
 
-  .field {
+#form-section{
+  display: flex;
+  flex-direction: column;
+  label{
+    font-weight: bold;
+  }
+  input{
+    width: 85%;
+  }
+  .input-sm{
+    width: 20%;
+  }
+  #top{
+    height: 30%;
     display: flex;
-
-    & label {
-      width: 15%;
-      padding: 5px;
-      font-weight: bold;
-    }
-
-    & .control {
-      width: 85%;
-
-      input, textarea {
-        padding: 10px;
-        border: 1px solid #eee;
-        border-radius: 3px;
-        width: 60%;
-      }
-
-      p {
-        margin: 5px 0;
-        font-size: 10px;
-        color: red;
+    justify-content: space-around;
+  }
+  #bottom{
+    display: flex;
+    .block{
+      display: flex;
+      margin: 2px;
+      .stat-block{
+        display:flex;
+        flex-direction: column;
+        margin: 2px;
       }
     }
+  }
+  .footer{
+    display: flex;
+    align-self: flex-end;
+    justify-self: flex-end;
   }
 }
 
@@ -167,11 +222,13 @@ form {
   }
   .item {
     display: flex;
-    border: 2px solid black;
+    border-style: solid;
+    border-color: #480B00;
     margin: .5px;
     width: 100%;
     justify-content: flex-start;
     flex-flow: column;
+    background-color: lightgray;
     h3{
       padding-left: 3px;
     }
@@ -187,9 +244,13 @@ form {
 
 //middle section
 #encounter-list {
-
+  width: 80%;
+  display: flex;
+  border: 5px solid #480B00;
+  margin: 4px;
+  background-color: lightgray;
 }
 
 #player-list {
-
+  border: 5px solid #480B00;
 }

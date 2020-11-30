@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react'
+import React, {createContext, useEffect, useReducer, useState} from 'react'
 import Monster from './Monster'
 import MonsterDetails from './MonsterDetails'
 import {Route, Switch, Link, Redirect, useHistory} from 'react-router-dom'
@@ -6,12 +6,17 @@ import {ErrorNotFound} from './Pages'
 import MonsterForm from './MonsterForm'
 import 'react-dropdown/style.css';
 import {useCookies} from "react-cookie";
+import EncounterMonster from "./EncounterMonster";
 
 export const MonsterContext = createContext()
 
 export default function MonsterList() {
 
-    const [monsters, setMonsters, encounter, setEncounter] = useState();
+
+    const [monsters, setMonsters] = useState();
+    const [encounter, setEncounter] = useState(initialEncounter);
+    const initialEncounter = [{}];
+
     const [cookie, setCookie, removeCookie] = useCookies(['token'])
     let [authenticated, setAuthenticated] =
         useState(cookie.token !== undefined)
@@ -25,23 +30,29 @@ export default function MonsterList() {
             })
                 .then(response => response.text())
                 .then((data) => {
+                    //console.log(data);
                     setMonsters(JSON.parse(data, (key, value) => {
                         //console.log(value);
                         return value
                     }))
+
                 })
                 .catch(console.error)
-        }
+            }
     })
 
+    function handleAdd (value){
+       setEncounter(value)
+    }
+
+
     if (!monsters) return <p>Loading ...</p>
-
     return (
-        <MonsterContext.Provider value={{
+        <MonsterContext.Provider value={
+            {encounter, setEncounter,
             monsters, setMonsters,
-            authenticated, setAuthenticated
-        }}>
-
+            authenticated, setAuthenticated}
+        }>
             <div className="pull-content-right">
                 <Route path="/monsters">
                     <button className="primary" onClick={
@@ -57,9 +68,21 @@ export default function MonsterList() {
                     <Route exact path="/monsters">
                         <section id="monster-list">
                             <div className="inner">
-                                {monsters.map((mon, i) => {
-                                    return <Monster key={mon.id} monster={mon}/>
-                                })}
+                                {
+                                    monsters.map((mon, i) => {
+                                        return <Monster onClick={mon =>handleAdd(mon)} key={mon.id} monster={mon}/>
+                                    })
+                                }
+                            </div>
+                        </section>
+                        <section id="encounter-list">
+                            <div className="inner">
+                                {
+                                    JSON.stringify(encounter)
+                                    // encounter.map((mon) => {
+                                    //     return <EncounterMonster onClick={mon =>handleAdd(mon)} key={mon.id} monster={mon}/>
+                                    // })
+                                }
                             </div>
                         </section>
                     </Route>
